@@ -281,7 +281,7 @@ void cleanup() {
 The graphics pipeline is the sequence of operations that take the vertices and textures of your meshes all the way to the pixels in the render targets. A simplified overview is displayed below:
 
 
-![Graphics Pipeline](image.png)
+![Graphics Pipeline](_assests/image.png)
 
 
 
@@ -334,7 +334,7 @@ The vertex shader processes each incoming vertex. It takes its attributes, like 
 A clip coordinate is a four dimensional vector from the vertex shader that is subsequently turned into a normalized device coordinate by dividing the whole vector by its last component. These normalized device coordinates are homogeneous coordinates that map the framebuffer to a [-1, 1] by [-1, 1] coordinate system that looks like the following:
 
 
-![Vertex Shader](image-1.png)
+![Vertex Shader](_assests/image-1.png)
 
 Fragment shader
 
