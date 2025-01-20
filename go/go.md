@@ -1,5 +1,11 @@
 # GO Notes
 
+Go is a statically typed language
+
+In Go, when you call a function or a method the arguments are copied.
+
+
+
 ## Go Documentation
 
 Go has a built-in tool, doc, which lets you examine any package installed on your system, or the module you're currently working on.
@@ -173,9 +179,92 @@ func SumAll(numbersToSum ...[]int) []int {
 ### Slices
 Slices can be sliced! The syntax is slice[low:high]. If you omit the value on one of the sides of the : it captures everything to that side of it. In our case, we are saying "take from 1 to the end" with numbers[1:]
 
-## Structs and Interfaces in Go
+## Structs, Methods and Interfaces in Go
+
+How to define struct in go ?
+
+```go
+type struct_name struct {
+	xxxxx
+	xxxxx
+}
+```
+
+example 
+
+```go
+type Rectangle struct {
+	Width  float64
+	Height float64
+}
+```
+
+use it example 
+
+```go
+rectangle := Rectangle{10.0,10.0}
+```
+
+---
 
 
+### Declaring Methods in Go
+
+```go
+func (c Circle) Area() float64 {
+	return 0
+}
+```
+
+Syntax -> func (receiverName ReceiverType) MethodName(args)
+
+When your method is called on a variable of that type, you get your reference to its data via the receiverName variable. In many other programming languages this is done implicitly and you access the receiver via this
+
+### Interfaces in Go
+
+```go
+type Shape interface {
+	Area() float64
+}
+```
+
+In Go interface resolution is implicit. If the type you pass in matches what the interface is asking for, it will compile.
+
+
+Declaring interfaces so you can define functions that can be used by different types (parametric polymorphism)
+
+---
+
+## Pointers and Erros in GO 
+
+In Go, when you call a function or a method the arguments are copied.
+
+When calling func (w Wallet) Deposit(amount int) the w is a copy of whatever we called the method from.
+
+Without getting too computer-sciency, when you create a value - like a wallet, it is stored somewhere in memory. You can find out what the address of that bit of memory with &myVal.
+
+The %p placeholder prints memory addresses in base 16 notation with leading 0xs and the  escape character prints a new line. Note that we get the pointer (memory address) of something by placing an & character at the beginning of the symbol.
+
+```go
+func (w Wallet) Deposit(amount int) {
+	fmt.Printf("address of balance in Deposit is %p \n", &w.balance)
+	w.balance += amount
+}
+```
+
+```bash
+address of balance in Deposit is 0xc420012268
+address of balance in test is 0xc420012260
+```
+
+You can see that the addresses of the two balances are different. So when we change the value of the balance inside the code, we are working on a copy of what came from the test. Therefore the balance in the test is unchanged.
+We can fix this with pointers. Pointers let us point to some values and then let us change them. So rather than taking a copy of the whole Wallet, we instead take a pointer to that wallet so that we can change the original values within it.
+
+The difference is the receiver type is *Wallet rather than Wallet which you can read as "a pointer to a wallet".
+
+These pointers to structs even have their own name: struct pointers and they are automatically dereferenced.
+
+---
 
 ## %q in Go
 When printing a string in Go you can use the verb %q in the format parameters of fmt functions, when available, to safely escape a string and add quotes to it.
