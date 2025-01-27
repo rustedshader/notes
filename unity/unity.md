@@ -1,18 +1,18 @@
 # Unity Notes
 
 
-## What is Rigidbody? 
+# What is Rigidbody? 
 
 A Rigidbody in Unity is a fundamental component of the physics system that allows GameObjects to be affected by physical forces and interact realistically with other objects in the game world. Here are the key aspects of Rigidbodies in Unity:
 
-## Adding W A S D to the rigibody 2d character
+# Adding W A S D to the rigibody 2d character
 
 example
 
 ```c#
  public Rigidbody2D rb;
     private readonly float _speed = 0.5f;
-    private readonly float _jumpSpeed = 0.03f;
+    private readonly float _jumpSpeed = 7;
     
     void Start()
     {
@@ -21,7 +21,7 @@ example
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
           rb.AddForce(Vector2.up * _jumpSpeed, ForceMode2D.Impulse); 
         }
@@ -57,7 +57,7 @@ where jumpHeight is a Vector2;
 public Vector2 jumpHeight
 ```
 
-## Transforming Camera W.R.T the character
+# Transforming Camera W.R.T the character
 
 - Create a Transform target
 - Update the current Position wrt transform of the GameObject
@@ -78,7 +78,73 @@ public Vector2 jumpHeight
 ```
 
 
+## * Note; KeyDown and Keyup for one input not continious input
+
+# Collision in 2D Unity
+
+```c#
+private void OnCollisionEnter2D(Collision collision)
+    {
+        if (collision.gameObject.name == "box"){
+            Debug.Log("Enter")
+        }
+
+        // Or Use Tags instead of gameObject Name
+
+        if (collision.gameObject.CompareTag("obstacle")){
+            Debug.Log("Enter the obstacle")
+        }
+    }
+
+private void OnCollisionStay2D(Collision collision)
+    {
+        if (collision.gameObject.name == "box"){
+            Debug.Log("Stay")
+        }
+    }
+
+private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "box"){
+            Debug.Log("Exit")
+        }
+    }
+```
+
+# Damage Dealing 2D Unity
+
+
+
+
+# Hashsets
+
+Just like sets but on sterioids
+
+enum ArmorType {
+    metalKneePlates,
+    LeatherJacket,
+    BikeHelmet
+}
+
+public class Character: Monobehaviour {
+    private HashSet<ArmorType> equippedArmor = new HashSet<ArmorType>{
+        ArmorType.LeatherJacket,
+    };
+
+    public void Equip(ArmorType armorType){
+        equippedArmor.Add(armorType);
+    }
+}
+
+# Random Walk Algorithms
+
+https://www.noveltech.dev/procgen-random-walk
+
+
 ## Spawning New Objects
 
 
 
+## Camera will move with player
+
+## 

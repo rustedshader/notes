@@ -52,3 +52,30 @@ No douplication
 # Frozen Set
 Same as set except Immutable
 
+# \r 
+overwrite the length of character
+
+print("hello\rupes") -> upeso
+
+# \b
+backslash
+
+# ~ bitwise compilementame
+-> answer always -1 * number -1 
+eg -> 1 -> -2
+
+# <<  Operator
+eg) 10 << 2 -> 40
+how to 10 *2  = 20 * 2 = 40
+
+# >> Operator 
+eg) 10 >> 2 -> 10 //2 = 5 // 2 -> 2
+
+# Terneray operator
+
+eg) x = 30 if x<10 else 40
+
+- For greater in 3 numbers
+eg) x = a if (a > b and a>c) else b if (b > c and b > a) else c
+
+# 
