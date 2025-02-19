@@ -14,7 +14,8 @@ bool data type
 True , False
 
 string data type
-string is just an array
+string is just an arra
+
 eg shubhang
 string slicing 3: -> ang
 string slicing :3 -> shu
@@ -78,4 +79,34 @@ eg) x = 30 if x<10 else 40
 - For greater in 3 numbers
 eg) x = a if (a > b and a>c) else b if (b > c and b > a) else c
 
-# 
+# Eval in Python
+
+```python3
+x = "print(55)"
+eval(x) -> Ouput: 55
+```
+
+# Hashing in Tuples
+
+Dictionary does not have index like list or tuples instead it uses hash function to store data efficiently
+
+Tuples are hashable because they are immutable 
+
+But same cannot be applied on the list because it is mutable
+
+t = (10,20)
+print(hash(t)) -> This will work
+print(hash([1,2,3,4])) -> This will give you error as list is mutable  and cannot be hashed
+
+
+# Dictionary
+
+.FromKeys
+
+```python
+a = ['1','2','3']
+print(dict.fromkeys(a))
+```
+Used to quickly initialize the dictionary by providing a default value to all the keys.
+
+.Update
